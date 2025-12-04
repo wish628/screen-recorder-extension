@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Recorder",
+  "version": "1.0",
+  "description": "One-click record THIS tab + microphone",
+  "permissions": ["tabCapture", "activeTab", "downloads", "scripting"],
+  "action": { 
+    "default_popup": "popup.html" 
+  },
+  "icons": {
+    "16": "icon.svg",
+    "32": "icon.svg",
+    "48": "icon.svg",
+    "128": "icon.svg"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
