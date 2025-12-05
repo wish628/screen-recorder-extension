@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Recorder",
   "version": "1.0",
-  "description": "One-click record THIS tab + microphone",
+  "description": "One-click record any browser tab with microphone audio. No external software required.",
   "permissions": ["tabCapture", "activeTab", "downloads", "scripting"],
   "action": { 
     "default_popup": "popup.html" 

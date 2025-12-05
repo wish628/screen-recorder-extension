@@ -247,13 +247,28 @@ async function startRecording() {
     // Cleanup on error
     cleanupPreviousRecording();
     
-    alert('Error starting recording: ' + error.message + '\n\n' +
-          'Check the console (Ctrl+Shift+J) for detailed error information.\n\n' +
-          'Common issues:\n' +
-          '- Permissions not granted\n' +
-          '- Trying to record restricted pages\n' +
-          '- No audio/video content in tab\n' +
-          '- Browser policies blocking capture');
+    // Provide more detailed error message with permission guidance
+    let errorMessage = 'Error starting recording: ' + error.message + '\n\n';
+    
+    if (error.message.includes('Permission')) {
+      errorMessage += 'PERMISSIONS NEEDED:\n' +
+                     '1. Look for YELLOW permission bar at TOP of webpage\n' +
+                     '2. Click "Allow" on the permission dialog\n' +
+                     '3. If microphone dialog appears, click "Allow" again\n\n' +
+                     'TROUBLESHOOTING:\n' +
+                     '- Close all Chrome windows and reopen\n' +
+                     '- Try recording a different website\n' +
+                     '- Check Chrome settings: Settings > Privacy > Camera & Microphone\n';
+    } else {
+      errorMessage += 'Check the console (Ctrl+Shift+J) for detailed error information.\n\n' +
+                     'Common issues:\n' +
+                     '- Permissions not granted\n' +
+                     '- Trying to record restricted pages\n' +
+                     '- No audio/video content in tab\n' +
+                     '- Browser policies blocking capture';
+    }
+    
+    alert(errorMessage);
     
     // Re-enable record button
     document.getElementById('rec').disabled = false;
