@@ -1,19 +1,43 @@
 {
   "manifest_version": 3,
   "name": "Screen Recorder",
-  "version": "1.1",
+  "version": "1.4",
   "description": "Record your full screen (desktop capture) and save as a video file.",
-  "permissions": ["desktopCapture", "downloads"],
+  "permissions": [
+    "desktopCapture",
+    "downloads",
+    "activeTab",
+    "scripting"
+  ],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup.html"
   },
+  "commands": {
+    "stop-recording": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Stop screen recording"
+    }
+  },
   "icons": {
     "16": "icon.svg",
     "32": "icon.svg",
     "48": "icon.svg",
     "128": "icon.svg"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "highlighter.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }

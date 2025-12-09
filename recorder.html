@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 380px;
+            height: 520px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .status-badge {
+            text-align: center;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 16px auto;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .status-idle {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-recording {
+            background: #fff3e0;
+            color: #e65100;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        button {
+            flex: 1;
+            height: 56px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        #rec {
+            background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+            color: white;
+        }
+
+        #stop {
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+            color: white;
+        }
+
+        .info-panel {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item .icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .shortcut-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎥 Screen Recorder</h1>
+
+        <div id="status" class="status-badge status-idle">
+            <span id="statusText">Ready to Record</span>
+        </div>
+
+        <div class="btn-group">
+            <button id="rec">🔴 REC</button>
+            <button id="stop" disabled>⏹ STOP</button>
+        </div>
+
+        <div class="info-panel">
+            <div class="info-item">
+                <span class="icon">1️⃣</span>
+                <span>Click REC and select what to record</span>
+            </div>
+            <div class="info-item">
+                <span class="icon">2️⃣</span>
+                <span>Window minimizes automatically</span>
+            </div>
+            <div class="info-item">
+                <span class="icon">3️⃣</span>
+                <span>Do your recording</span>
+            </div>
+            <div class="info-item">
+                <span class="icon">4️⃣</span>
+                <span><strong>To Stop:</strong> Click this window in taskbar</span>
+            </div>
+        </div>
+
+        <div class="shortcut-box">
+            💡 <strong>How to Stop Recording</strong><br>
+            Click this window icon in your taskbar.<br>
+            Recording stops instantly when window appears!
+        </div>
+    </div>
+
+    <script src="recorder.js"></script>
+</body>
+
+</html>
